@@ -1,4 +1,4 @@
-﻿@echo off
+@echo off
 :: ============================================================
 ::  Axiom Zeta Sentinel SOVEREIGN - One-Click Installer (Windows)
 ::

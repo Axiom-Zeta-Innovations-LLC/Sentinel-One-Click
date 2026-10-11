@@ -1,4 +1,4 @@
-﻿@echo off
+@echo off
 :: ============================================================
 ::  Axiom Zeta Sentinel SOLO - One-Click Installer (Windows)
 ::
