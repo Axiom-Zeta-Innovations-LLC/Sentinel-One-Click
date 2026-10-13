@@ -47,6 +47,16 @@ if !ERRORLEVEL! NEQ 0 (
     pause
     exit /b 1
 )
+python -c "import platform, sys; sys.exit(0 if 'ARM' not in platform.machine().upper() else 1)" >nul 2>nul
+if !ERRORLEVEL! NEQ 0 (
+    echo.
+    echo  WARNING: this Python is ARM64-native.
+    echo  Some packages ^(uvicorn[standard]^) publish no ARM64 Windows wheels and would
+    echo  need a C compiler to build. Use 64-bit ^(x64^) Python 3.12 instead - it runs
+    echo  fine under emulation on ARM64 Windows.
+    choice /C YN /M "Continue with this Python anyway"
+    if !ERRORLEVEL! EQU 2 exit /b 1
+)
 echo  Python found.
 
 :: ── Step 1: Rust ────────────────────────────────────────────
@@ -74,11 +84,21 @@ cd /d "!APP_DIR!"
 
 if not exist ".venv" (
     python -m venv .venv
+    if !ERRORLEVEL! NEQ 0 (
+        echo  ERROR: could not create the virtual environment.
+        pause
+        exit /b 1
+    )
 )
 call .venv\Scripts\activate.bat
 
 echo  Installing build tools...
 pip install -q -U pip maturin
+if !ERRORLEVEL! NEQ 0 (
+    echo  ERROR: failed to install build tools ^(pip, maturin^). Check your connection and retry.
+    pause
+    exit /b 1
+)
 
 if exist "rust" (
     echo  Compiling Rust extension (5-15 minutes)...
@@ -90,6 +110,11 @@ if exist "rust" (
 echo  Installing Python dependencies...
 if exist "requirements-dev.txt" pip install -q -r requirements-dev.txt
 pip install -q -e .
+if !ERRORLEVEL! NEQ 0 (
+    echo  ERROR: failed to install Sentinel dependencies. Scroll up for the red lines.
+    pause
+    exit /b 1
+)
 
 :: ── Step 3: API Key ─────────────────────────────────────────
 echo.
