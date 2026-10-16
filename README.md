@@ -38,12 +38,8 @@ Health check: `http://localhost:8000/v1/health`
 
 ## Source
 
-Each edition is bundled from its canonical repo (all AGPL-3.0):
+Each edition is bundled from its canonical repo:
 
 - [axiom-zeta-sentinel-solo](https://github.com/Axiom-Zeta-Innovations-LLC/axiom-zeta-sentinel-solo)
 - [axiom-zeta-sentinel-teams](https://github.com/Axiom-Zeta-Innovations-LLC/axiom-zeta-sentinel-teams)
 - [axiom-zeta-sentinel-sovereign](https://github.com/Axiom-Zeta-Innovations-LLC/axiom-zeta-sentinel-sovereign)
-
-## License
-
-AGPL-3.0 — the software is free.
