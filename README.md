@@ -1,5 +1,7 @@
 # Sentinel One-Click Installers
 
+> **License: None — Proprietary. © 2026 Axiom Zeta Innovations LLC. All rights reserved.** This repository is source-visible only. No license is granted to copy, modify, distribute, or use this software; viewing this code grants no rights. All content is the property of Axiom Zeta Innovations LLC.
+
 **Drift prevention, one click away.** Pick your Sentinel edition, run the installer, and you have a local LLM/RAG drift-prevention gateway running on your machine.
 
 ## Which one?
